@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Cards.cs" />
     <Compile Include="FiveCards\FiveCardPokerEvaluator.cs" />
+    <Compile Include="FiveCards\FlushEvaluator.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="IHandEvaluator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
