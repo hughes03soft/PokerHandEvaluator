@@ -12,7 +12,7 @@ namespace PokerHandEvaluator
 
         public int OredCardValues { get; private set; } = 0;
         public int AndedSuites { get; private set; } = 0xFFFF;
-        public Card.Values MaxCardValue { get; private set; }
+        public Card.Values MaxCardValue { get; private set; } = Card.Values.Two;
 
         public Hand(string owner, string[] cards)
         {
@@ -26,6 +26,9 @@ namespace PokerHandEvaluator
 
                 OredCardValues |= (int)newCard.Value;
                 AndedSuites &= (int)newCard.Suite;
+
+                if (newCard.Value > MaxCardValue)
+                    MaxCardValue = newCard.Value;
             }
         }
     }

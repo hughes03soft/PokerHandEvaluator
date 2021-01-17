@@ -60,19 +60,4 @@ namespace PokerHandEvaluator.FiveCards
             return winners;
         }
     }
-
-    public static class FiveCardPokerCardExt
-    {
-        public static Card.Values Max(this List<Card> cards)
-        {
-            //revise
-            Card.Values min = Card.Values.Two;
-
-            foreach (var card in cards)
-                if (card.Value > min)
-                    min = card.Value;
-
-            return min;
-        }
-    }
 }
