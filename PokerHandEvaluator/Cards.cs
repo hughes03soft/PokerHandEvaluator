@@ -6,6 +6,7 @@ namespace PokerHandEvaluator
     public class Card
     {
         public const int SUITE_MASK = 0xF;
+
         public enum Suites
         {
             Club    = 1,
@@ -13,6 +14,7 @@ namespace PokerHandEvaluator
             Heart   = 1 << 2,
             Diamond = 1 << 3
         };
+
         public enum Values
         {
             Two     = 1 << 1,

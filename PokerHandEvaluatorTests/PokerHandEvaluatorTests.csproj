@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="CardTests.cs" />
     <Compile Include="FiveCards\FlushEvaluatorTests.cs" />
+    <Compile Include="FiveCards\StraightEvaluatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
