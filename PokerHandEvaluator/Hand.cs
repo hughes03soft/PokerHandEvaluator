@@ -10,6 +10,10 @@ namespace PokerHandEvaluator
         public string Description { get; set; }
         public int RankScore { get; set; }
 
+        public int OredCardValues { get; private set; } = 0;
+        public int AndedSuites { get; private set; } = 0xFFFF;
+        public Card.Values MaxCardValue { get; private set; }
+
         public Hand(string owner, string[] cards)
         {
             Owner = owner;
@@ -17,7 +21,11 @@ namespace PokerHandEvaluator
 
             foreach (var card in cards)
             {
-                Cards.Add(new Card(card));
+                Card newCard = new Card(card);
+                Cards.Add(newCard);
+
+                OredCardValues |= (int)newCard.Value;
+                AndedSuites &= (int)newCard.Suite;
             }
         }
     }

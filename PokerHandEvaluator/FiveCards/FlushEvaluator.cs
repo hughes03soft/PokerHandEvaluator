@@ -8,12 +8,7 @@ namespace PokerHandEvaluator.FiveCards
 
         public bool IsValidCombination(Hand hand)
         {
-            int andedSuites = 0xFFFF;
-
-            foreach (var card in hand.Cards)
-                andedSuites &= (int)card.Suite;
-
-            if ((andedSuites & Card.SUITE_MASK) > 0)
+            if ((hand.AndedSuites & Card.SUITE_MASK) > 0)
                 return true;
 
             return false;
