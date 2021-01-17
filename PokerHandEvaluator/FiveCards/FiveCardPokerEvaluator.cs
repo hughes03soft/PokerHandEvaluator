@@ -19,13 +19,25 @@ namespace PokerHandEvaluator.FiveCards
             RoyalFlush      = 1 << 25
         };
 
-        private List<IHandEvaluator> Evaluators = new List<IHandEvaluator>();
+        //add evaluators starting from the highest rank
+        //if not, evaluation might be wrong.
+        //
+        //For example, StraightEvaluator will check only for 5 consecutive cards
+        //regardless of suite. If the StraightEvaluator is run first before the
+        //RoyalFlushEvaluator, a royal flush hand, which has 5 consecutive cards,
+        //will be evaluated as just a straight
+
+        private List<IHandEvaluator> Evaluators = new List<IHandEvaluator>()
+        {
+            new RoyalFlushEvaluator(),
+            new StraightFlushEvaluator(),
+            new FlushEvaluator(),
+            new StraightEvaluator(),      
+        };
 
         public FiveCardPokerEvaluator()
         {
-            //add evaluators starting from the highest rank
-            Evaluators.Add(new FlushEvaluator());
-            Evaluators.Add(new StraightEvaluator());
+
         }
 
         private Hand CreateHand(string owner, string[] cards)
