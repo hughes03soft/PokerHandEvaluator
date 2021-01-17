@@ -24,6 +24,7 @@ namespace PokerHandEvaluator.FiveCards
         public FiveCardPokerEvaluator()
         {
             //add evaluators starting from the highest rank
+            Evaluators.Add(new FlushEvaluator());
         }
 
         private Hand CreateHand(string owner, string[] cards)
