@@ -8,15 +8,26 @@ namespace PokerHandEvaluator.FiveCards
 {
     public class StraightEvaluator : IHandEvaluator
     {
+        private static int LastCheckedOredCardValue = 0;
+        private static bool LastIsValidCombinationResult = false;
         public string Description => "Straight";
 
         public bool IsValidCombination(Hand hand)
         {
-            int fiveCardStraightMask = 0b11111;
+            //avoid repetitive calls
+            if (LastCheckedOredCardValue == hand.OredCardValues)
+            {
+                LastCheckedOredCardValue = hand.OredCardValues;
+                return LastIsValidCombinationResult;
+            }
+
             const int maskLength = 5;
             const int bit0AndOffset = 2;
+
             bool isValid = false;
-            for(int i = 0; i < Enum.GetNames(typeof(Card.Values)).Length + bit0AndOffset - maskLength; i++)
+            int fiveCardStraightMask = 0b11111;
+
+            for (int i = 0; i < Enum.GetNames(typeof(Card.Values)).Length + bit0AndOffset - maskLength; i++)
             {
                 if ((hand.OredCardValues & fiveCardStraightMask) == fiveCardStraightMask)
                 {
@@ -27,6 +38,7 @@ namespace PokerHandEvaluator.FiveCards
                 fiveCardStraightMask <<= 1;
             }
 
+            LastIsValidCombinationResult = isValid;
             return isValid;
         }
 
@@ -36,9 +48,9 @@ namespace PokerHandEvaluator.FiveCards
 
             const int FiveToAceMask = 0b11111;
             if ((hand.OredCardValues & FiveToAceMask) == FiveToAceMask)
-                rankScore += (int)Card.Values.Five; 
+                rankScore += (int)Card.Values.Five;
             else
-                rankScore += (int)hand.Cards.Max(); 
+                rankScore += (int)hand.MaxCardValue;
 
             return rankScore;
         }
