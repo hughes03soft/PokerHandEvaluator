@@ -7,11 +7,11 @@ namespace PokerHandEvaluator.Tests
     public class CardTests
     {
         [DataTestMethod()]
-        [DataRow("2C", Card.Suites.Club, Card.Values.Two)]
-        [DataRow("AS", Card.Suites.Club, Card.Values.Two)]
-        [DataRow("KH", Card.Suites.Club, Card.Values.Two)]
-        [DataRow("10D", Card.Suites.Club, Card.Values.Two)]
-        public void CardTest_ValidInput(string rawCard, Card.Suites expectedSuite, Card.Values expectedValue)
+        [DataRow("2C",  Card.Values.Two, Card.Suites.Club)]
+        [DataRow("AS",  Card.Values.Ace, Card.Suites.Spade)]
+        [DataRow("KH",  Card.Values.King, Card.Suites.Heart)]
+        [DataRow("10D", Card.Values.Ten, Card.Suites.Diamond)]
+        public void CardTest_ValidInput(string rawCard, Card.Values expectedValue, Card.Suites expectedSuite)
         {
             var card = new Card(rawCard);
             Assert.AreEqual(card.Suite, expectedSuite);
