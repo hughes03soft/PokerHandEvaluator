@@ -37,8 +37,17 @@ namespace PokerHandEvaluator.FiveCards
 
         public int CalculateRankScore(Hand hand)
         {
-            int rankScore = (int)FiveCardPokerEvaluator.HandRank.Straight +
-                (int)hand.Cards.Max();
+            int rankScore = (int)FiveCardPokerEvaluator.HandRank.Straight;
+
+            int oredValues = 0;
+            foreach (var card in hand.Cards)
+                oredValues |= (int)card.Value;
+
+            const int FiveToAceMask = 0b11111;
+            if ((oredValues & FiveToAceMask) == FiveToAceMask)
+                rankScore += (int)Card.Values.Five; 
+            else
+                rankScore += (int)hand.Cards.Max(); 
 
             return rankScore;
         }
