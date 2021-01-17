@@ -5,7 +5,7 @@ namespace PokerHandEvaluator.FiveCards
 {
     public class FiveCardPokerEvaluator
     {
-        public enum HandRanks
+        public enum HandRank
         {
             HighCard        = 1 << 16,
             OnePair         = 1 << 17,
@@ -47,15 +47,30 @@ namespace PokerHandEvaluator.FiveCards
         {
             var hands = new List<Hand>();
 
-            foreach(var card in cards)
+            foreach (var card in cards)
             {
                 hands.Add(new Hand(owner, cards));
-            }    
+            }
 
             int maxRankScore = hands.Max(h => h.RankScore);
             var winners = hands.Where(h => h.RankScore == maxRankScore).ToList();
 
             return winners;
+        }
+    }
+
+    public static class FiveCardPokerCardExt
+    {
+        public static Card.Values Max(this List<Card> cards)
+        {
+            //revise
+            Card.Values min = Card.Values.Two;
+
+            foreach (var card in cards)
+                if (card.Value > min)
+                    min = card.Value;
+
+            return min;
         }
     }
 }
