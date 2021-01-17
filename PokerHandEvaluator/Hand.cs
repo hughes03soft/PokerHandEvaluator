@@ -2,7 +2,7 @@
 
 namespace PokerHandEvaluator
 {
-    class Hand
+    public class Hand
     {
         public string Owner { get; private set; }
         public string[] RawCards { get; private set; }
