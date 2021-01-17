@@ -2,7 +2,7 @@
 
 namespace PokerHandEvaluator.FiveCards
 {
-    public class FlushEvaluator : IHandEvalutor
+    public class FlushEvaluator : IHandEvaluator
     {
         public string Description => "Flush";
 

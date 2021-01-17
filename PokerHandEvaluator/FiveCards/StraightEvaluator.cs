@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokerHandEvaluator.FiveCards
 {
-    public class StraightEvaluator : IHandEvalutor
+    public class StraightEvaluator : IHandEvaluator
     {
         public string Description => "Straight";
 

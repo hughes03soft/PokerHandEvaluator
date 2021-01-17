@@ -19,7 +19,7 @@ namespace PokerHandEvaluator.FiveCards
             RoyalFlush      = 1 << 25
         };
 
-        private List<IHandEvalutor> Evaluators = new List<IHandEvalutor>();
+        private List<IHandEvaluator> Evaluators = new List<IHandEvaluator>();
 
         public FiveCardPokerEvaluator()
         {
@@ -32,7 +32,7 @@ namespace PokerHandEvaluator.FiveCards
         {
             Hand hand = new Hand(owner, cards);
 
-            foreach (IHandEvalutor evaluator in Evaluators)
+            foreach (IHandEvaluator evaluator in Evaluators)
             {
                 if (evaluator.IsValidCombination(hand))
                 {
