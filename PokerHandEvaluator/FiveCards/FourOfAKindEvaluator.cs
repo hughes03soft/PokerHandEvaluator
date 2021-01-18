@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PokerHandEvaluator.FiveCards
+﻿namespace PokerHandEvaluator.FiveCards
 {
     public class FourOfAKindEvaluator : IHandEvaluator
     {
