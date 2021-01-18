@@ -25,8 +25,8 @@ namespace PokerHandEvaluator.FiveCards.Tests
         {
             yield return new object[] { new Hand("Player1", new string[] { "AC", "AS", "AH", "AD", "10C" }), true };
             yield return new object[] { new Hand("Player1", new string[] { "7C", "7S", "7H", "7D", "9C" }), true };
-            yield return new object[] { new Hand("Player1", new string[] { "AH", "3H", "6S", "KH", "7H" }), false };
-            yield return new object[] { new Hand("Player1", new string[] { "2C", "3H", "4H", "KD", "6H" }), false };
+            yield return new object[] { new Hand("Player1", new string[] { "AH", "AH", "AS", "KH", "7H" }), false };
+            yield return new object[] { new Hand("Player1", new string[] { "2C", "2H", "4H", "KD", "6H" }), false };
         }
 
         [DataTestMethod()]
