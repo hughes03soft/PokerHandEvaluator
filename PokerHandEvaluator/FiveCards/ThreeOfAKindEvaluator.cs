@@ -19,14 +19,8 @@ namespace PokerHandEvaluator.FiveCards
 
         public int CalculateRankScore(Hand hand)
         {
-            int rankScore = (int)FiveCardPokerEvaluator.HandRank.ThreeOfAKind;
-
-            int highCard = 0;
-            foreach (var cardValue in hand.UniqueCardValues)
-            {
-                if ((int)cardValue > highCard)
-                    highCard = (int)cardValue;
-            }
+            int rankScore = (int)FiveCardPokerEvaluator.HandRank.ThreeOfAKind +
+                            (int)hand.CardValueOfMaxDuplicateCount;
 
             return rankScore;
         }
