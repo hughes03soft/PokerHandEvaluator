@@ -30,17 +30,28 @@ namespace PokerHandEvaluator.FiveCards.Tests
         }
 
         [DataTestMethod()]
-        [DynamicData(nameof(GetCalculateRankScoreTestTestData), DynamicDataSourceType.Method)]
+        [DynamicData(nameof(GetCalculateRankScoreTestData), DynamicDataSourceType.Method)]
         public void CalculateRankScoreTest(Hand hand, int expected)
         {
             int actual = Eval.CalculateRankScore(hand);
             Assert.AreEqual(expected, actual);
         }
 
-        public static IEnumerable<object[]> GetCalculateRankScoreTestTestData()
+        public static IEnumerable<object[]> GetCalculateRankScoreTestData()
         {
             yield return new object[] { new Hand("Player1", new string[] { "AC", "AS", "AH", "AD", "10C" }), (int)FiveCardPokerEvaluator.HandRank.FourOfAKind + (int)Card.Values.Ace };
             yield return new object[] { new Hand("Player1", new string[] { "7C", "7S", "7H", "7D", "9C" }), (int)FiveCardPokerEvaluator.HandRank.FourOfAKind + (int)Card.Values.Seven };
+        }
+
+        [TestMethod]
+        public void FindLesserRank()
+        {
+            var lesserHand = new Hand("higherHand", new string[] { "7C", "7S", "7H", "7D", "9C" });
+            var higherHand = new Hand("lesserHand", new string[] { "AC", "AS", "AH", "AD", "10C" });
+
+            int lesserRankScore = Eval.CalculateRankScore(lesserHand);
+            int higherRankScore = Eval.CalculateRankScore(higherHand);
+            Assert.IsTrue(lesserRankScore < higherRankScore);
         }
     }
 }
