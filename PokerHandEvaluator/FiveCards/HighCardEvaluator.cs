@@ -8,7 +8,7 @@ namespace PokerHandEvaluator.FiveCards
 {
     public class HighCardEvaluator : IHandEvaluator
     {
-        const int EXPECTED_UNIQUE_CARD_VALUES = 5;
+        private const int EXPECTED_UNIQUE_CARD_VALUES = 5;
         public string Description => "High Card";
 
         public int CalculateRankScore(Hand hand)

@@ -8,8 +8,8 @@ namespace PokerHandEvaluator.FiveCards
 {
     public class FullHouseEvaluator : IHandEvaluator
     {
-        private int EXPECTED_UNIQUE_CARD_VALUES = 2;
-        private int EXPECTED_MAX_DUPLICATE_COUNT = 3;
+        private const int EXPECTED_UNIQUE_CARD_VALUES = 2;
+        private const int EXPECTED_MAX_DUPLICATE_COUNT = 3;
         public string Description => "Full House";
         public bool IsValidCombination(Hand hand)
         {

@@ -8,8 +8,8 @@ namespace PokerHandEvaluator.FiveCards
 {
     public class OnePairEvaluator : IHandEvaluator
     {
-        private int EXPECTED_UNIQUE_CARD_VALUES = 4;
-        private int EXPECTED_MAX_DUPLICATE_COUNT = 2;
+        private const int EXPECTED_UNIQUE_CARD_VALUES = 4;
+        private const int EXPECTED_MAX_DUPLICATE_COUNT = 2;
         public string Description => "Three of a Kind";
         public bool IsValidCombination(Hand hand)
         {
