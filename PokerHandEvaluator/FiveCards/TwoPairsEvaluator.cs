@@ -29,11 +29,11 @@ namespace PokerHandEvaluator.FiveCards
             {
                 if (hand.CardValueCount(value) == EXPECTED_MAX_DUPLICATE_COUNT)
                 {
-                    rankScore += ((int)value << 1);
+                    rankScore |= ((int)value << 1);
                 }
                 else
                 {
-                    rankScore += (int)value;
+                    rankScore |= (int)value;
                 }
             }
 
