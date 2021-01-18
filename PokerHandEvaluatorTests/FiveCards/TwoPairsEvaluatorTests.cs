@@ -30,17 +30,61 @@ namespace PokerHandEvaluator.FiveCards.Tests
         }
 
         [DataTestMethod()]
-        [DynamicData(nameof(GetCalculateRankScoreTestTestData), DynamicDataSourceType.Method)]
+        [DynamicData(nameof(GetCalculateRankScoreTestData), DynamicDataSourceType.Method)]
         public void CalculateRankScoreTest(Hand hand, int expected)
         {
             int actual = Eval.CalculateRankScore(hand);
             Assert.AreEqual(expected, actual);
         }
 
-        public static IEnumerable<object[]> GetCalculateRankScoreTestTestData()
+        public static IEnumerable<object[]> GetCalculateRankScoreTestData()
         {
             yield return new object[] { new Hand("Player1", new string[] { "AC", "AS", "KH", "KD", "10C" }), (int)FiveCardPokerEvaluator.HandRank.TwoPairs + (((int)Card.Values.Ace << 1) | ((int)Card.Values.King << 1) | ((int)Card.Values.Ten)) };
             yield return new object[] { new Hand("Player1", new string[] { "7C", "7S", "3H", "3D", "JC" }), (int)FiveCardPokerEvaluator.HandRank.TwoPairs + (((int)Card.Values.Seven << 1) | ((int)Card.Values.Three << 1) | ((int)Card.Values.Jack)) };
+        }
+
+        [TestMethod]
+        public void FindLesserRankFirstHighCard()
+        {
+            var lesserHand = new Hand("higherHand", new string[] { "QS", "QH", "JS", "JS", "9S" });
+            var higherHand = new Hand("lesserHand", new string[] { "AS", "AC", "3C", "3D", "4H" });
+
+            int lesserRankScore = Eval.CalculateRankScore(lesserHand);
+            int higherRankScore = Eval.CalculateRankScore(higherHand);
+            Assert.IsTrue(lesserRankScore < higherRankScore);
+        }
+
+        [TestMethod]
+        public void FindLesserRankFirstPairTied()
+        {
+            var lesserHand = new Hand("higherHand", new string[] { "AD", "AH", "JS", "JS", "9S" });
+            var higherHand = new Hand("lesserHand", new string[] { "AS", "AC", "QC", "QD", "4H" });
+
+            int lesserRankScore = Eval.CalculateRankScore(lesserHand);
+            int higherRankScore = Eval.CalculateRankScore(higherHand);
+            Assert.IsTrue(lesserRankScore < higherRankScore);
+        }
+
+        [TestMethod]
+        public void FindLesserRankFirstPairTiedSecondPairTied()
+        {
+            var lesserHand = new Hand("higherHand", new string[] { "AD", "AH", "QS", "QS", "9S" });
+            var higherHand = new Hand("lesserHand", new string[] { "AS", "AC", "QC", "QD", "10H" });
+
+            int lesserRankScore = Eval.CalculateRankScore(lesserHand);
+            int higherRankScore = Eval.CalculateRankScore(higherHand);
+            Assert.IsTrue(lesserRankScore < higherRankScore);
+        }
+
+        [TestMethod]
+        public void TieTest()
+        {
+            var hand1 = new Hand("hand1", new string[] { "AD", "AH", "QS", "QS", "9S" });
+            var hand2 = new Hand("hand2", new string[] { "AS", "AC", "QC", "QD", "9C" });
+
+            int rankScore1 = Eval.CalculateRankScore(hand1);
+            int rankScore2 = Eval.CalculateRankScore(hand2);
+            Assert.AreEqual(rankScore1, rankScore2);
         }
     }
 }
