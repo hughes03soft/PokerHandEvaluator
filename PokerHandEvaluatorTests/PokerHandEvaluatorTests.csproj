@@ -61,6 +61,7 @@
     <Compile Include="FiveCards\FlushEvaluatorTests.cs" />
     <Compile Include="FiveCards\FourOfAKindEvaluatorTests.cs" />
     <Compile Include="FiveCards\FullHouseEvaluatorTests.cs" />
+    <Compile Include="FiveCards\OnePairEvaluatorTests.cs" />
     <Compile Include="FiveCards\StraightEvaluatorTests.cs" />
     <Compile Include="FiveCards\StraightFlushEvaluatorTests.cs" />
     <Compile Include="FiveCards\ThreeOfAKindEvaluatorTests.cs" />
