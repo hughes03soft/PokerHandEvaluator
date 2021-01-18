@@ -45,11 +45,14 @@
     <Compile Include="FiveCards\FourOfAKindEvaluator.cs" />
     <Compile Include="FiveCards\FullHouseEvaluator.cs" />
     <Compile Include="FiveCards\HighCardEvaluator.cs" />
+    <Compile Include="FiveCards\OnePairEvaluator.cs" />
     <Compile Include="FiveCards\RoyalFlushEvaluator.cs" />
     <Compile Include="FiveCards\FiveCardPokerEvaluator.cs" />
     <Compile Include="FiveCards\FlushEvaluator.cs" />
     <Compile Include="FiveCards\StraightEvaluator.cs" />
     <Compile Include="FiveCards\StraightFlushEvaluator.cs" />
+    <Compile Include="FiveCards\ThreeOfAKindEvaluator.cs" />
+    <Compile Include="FiveCards\TwoPairsEvaluator.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="IHandEvaluator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

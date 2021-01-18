@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace PokerHandEvaluator.FiveCards
 {
-    public class ThreeOfAKindEvaluator : IHandEvaluator
+    public class TwoPairsEvaluator : IHandEvaluator
     {
-        public string Description => "Three of a Kind";
+        public string Description => throw new NotImplementedException();
 
-        public bool IsValidCombination(Hand hand)
+        public int CalculateRankScore(Hand hand)
         {
             throw new NotImplementedException();
         }
 
-        public int CalculateRankScore(Hand hand)
+        public bool IsValidCombination(Hand hand)
         {
             throw new NotImplementedException();
         }
