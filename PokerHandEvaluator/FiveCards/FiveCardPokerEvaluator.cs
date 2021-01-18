@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace PokerHandEvaluator.FiveCards
 {
@@ -55,6 +56,9 @@ namespace PokerHandEvaluator.FiveCards
                 }
             }
 
+            if (hand.RankScore == 0)
+                throw new ArgumentException("Card Combination Not Found");
+
             return hand;
         }
 
@@ -64,7 +68,7 @@ namespace PokerHandEvaluator.FiveCards
 
             foreach (var card in cards)
             {
-                hands.Add(new Hand(owner, cards));
+                hands.Add(CreateHand(owner, cards));
             }
 
             int maxRankScore = hands.Max(h => h.RankScore);

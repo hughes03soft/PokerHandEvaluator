@@ -50,7 +50,7 @@ namespace PokerHandEvaluator.FiveCards
             if ((hand.OredCardValues & FiveToAceMask) == FiveToAceMask)
                 rankScore += (int)Card.Values.Five;
             else
-                rankScore += (int)hand.MaxCardValue;
+                rankScore += (int)hand.HighestCardValue;
 
             return rankScore;
         }
