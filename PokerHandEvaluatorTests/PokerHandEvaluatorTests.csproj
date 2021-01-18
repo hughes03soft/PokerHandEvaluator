@@ -57,7 +57,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CardTests.cs" />
+    <Compile Include="FiveCards\FiveCardPokerEvaluatorTests.cs" />
     <Compile Include="FiveCards\FlushEvaluatorTests.cs" />
+    <Compile Include="FiveCards\FourOfAKindEvaluatorTests.cs" />
     <Compile Include="FiveCards\StraightEvaluatorTests.cs" />
     <Compile Include="FiveCards\StraightFlushEvaluatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cards.cs" />
+    <Compile Include="FiveCards\FourOfAKindEvaluator.cs" />
     <Compile Include="FiveCards\HighCardEvaluator.cs" />
     <Compile Include="FiveCards\RoyalFlushEvaluator.cs" />
     <Compile Include="FiveCards\FiveCardPokerEvaluator.cs" />
