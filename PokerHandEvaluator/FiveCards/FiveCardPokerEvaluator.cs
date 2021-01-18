@@ -25,6 +25,8 @@ namespace PokerHandEvaluator.FiveCards
         //add evaluators starting from the highest rank
         //if not, evaluation might be wrong.
         //
+        //TODO: refactor to not depend on order 
+        //
         //For example, StraightEvaluator will check only for 5 consecutive cards
         //regardless of suite. If the StraightEvaluator is run first before the
         //RoyalFlushEvaluator, a royal flush hand, which has 5 consecutive cards,
@@ -43,11 +45,6 @@ namespace PokerHandEvaluator.FiveCards
             new OnePairEvaluator(),
             new HighCardEvaluator()
         };
-
-        public FiveCardPokerEvaluator()
-        {
-
-        }
 
         private Hand CreateHand(string owner, string[] cards)
         {
@@ -69,13 +66,13 @@ namespace PokerHandEvaluator.FiveCards
             return hand;
         }
 
-        public List<Hand> GetWinners(string owner, string[] cards)
+        public List<Hand> GetWinners(Dictionary<string, string[]> playerHands)
         {
             var hands = new List<Hand>();
 
-            foreach (var card in cards)
+            foreach (var player in playerHands.Keys)
             {
-                hands.Add(CreateHand(owner, cards));
+                hands.Add(CreateHand(player, playerHands[player]));
             }
 
             int maxRankScore = hands.Max(h => h.RankScore);
