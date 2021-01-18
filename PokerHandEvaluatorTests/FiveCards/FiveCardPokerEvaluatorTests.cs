@@ -46,7 +46,21 @@ namespace PokerHandEvaluator.FiveCards.Tests
                 }
             };
 
-
+            yield return new object[]
+            {
+                new Dictionary<string, string[]>()
+                {
+                    ["Joe"] =  new string [] { "AH", "KH", "QH", "JH", "10H" },
+                    ["Jen"] =  new string [] { "AC", "KC", "QC", "JC", "10C" },
+                    ["Bob"] =  new string [] { "AS", "KS", "QS", "JS", "10S" }
+                },
+                new List<Hand> ()
+                {
+                    new Hand("Joe", new string [] { "AH", "KH", "QH", "JH", "10H" }),
+                    new Hand("Jen", new string [] { "AC", "KC", "QC", "JC", "10C" }),
+                    new Hand("Bob", new string [] { "AS", "KS", "QS", "JS", "10S" }),
+                }
+            };
         }
     }
 }
