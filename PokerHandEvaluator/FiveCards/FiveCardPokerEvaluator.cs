@@ -32,7 +32,8 @@ namespace PokerHandEvaluator.FiveCards
             new RoyalFlushEvaluator(),
             new StraightFlushEvaluator(),
             new FlushEvaluator(),
-            new StraightEvaluator(),      
+            new StraightEvaluator(), 
+            new HighCardEvaluator()
         };
 
         public FiveCardPokerEvaluator()
