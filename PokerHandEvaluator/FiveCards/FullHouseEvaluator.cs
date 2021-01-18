@@ -19,7 +19,7 @@ namespace PokerHandEvaluator.FiveCards
 
         public int CalculateRankScore(Hand hand)
         {
-            int rankScore = (int)FiveCardPokerEvaluator.HandRank.FullHouse +
+            int rankScore = (int)FiveCardPokerEvaluator.HandRank.FullHouse |
                             (int)hand.CardValueOfMaxDuplicateCount;
 
             return rankScore;
