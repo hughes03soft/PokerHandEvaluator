@@ -37,5 +37,27 @@ namespace PokerHandEvaluator.FiveCards.Tests
             int actual = Eval.CalculateRankScore(hand);
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void FindLesserRank()
+        {
+            var lesserHand = new Hand("higherHand", new string[] { "2C", "3C", "4C", "5C", "6C" });
+            var higherHand = new Hand("lesserHand", new string[] { "KS", "QS", "JS", "10S", "9S" });
+
+            int lesserRankScore = Eval.CalculateRankScore(lesserHand);
+            int higherRankScore = Eval.CalculateRankScore(higherHand);
+            Assert.IsTrue(lesserRankScore < higherRankScore);
+        }
+
+        [TestMethod]
+        public void TieTest()
+        {
+            var hand1 = new Hand("hand1", new string[] { "AC", "3C", "6C", "KC", "7C" });
+            var hand2 = new Hand("hand2", new string[] { "AS", "3S", "6S", "KS", "7S" });
+
+            int rankScore1 = Eval.CalculateRankScore(hand1);
+            int rankScore2 = Eval.CalculateRankScore(hand2);
+            Assert.AreEqual(rankScore1, rankScore2);
+        }
     }
 }
