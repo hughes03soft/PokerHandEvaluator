@@ -21,19 +21,26 @@ namespace PokerHandEvaluator.FiveCards
         public int CalculateRankScore(Hand hand)
         {
             int rankScore = (int)FiveCardPokerEvaluator.HandRank.TwoPairs;
-            //highest 2 msb is currently free
-            // shift left CardValue once for the pairs
-            // rankScore = shifted(1) + non-pair
 
-            foreach (var value in hand.UniqueCardValues)
+            //16-bit representation, 4 bits each
+            //empty | 1st Pair | 2nd Pair | High Card
+
+            const int bitWidth = 4;
+            int shifts = bitWidth;
+
+            SortedSet<Card.Values> sortedCardValues = new SortedSet<Card.Values>(hand.UniqueCardValues);
+
+            //expecting just 3 items and getting lowest pair first before the highest pair
+            foreach (var value in sortedCardValues)
             {
                 if (hand.CardValueCount(value) == EXPECTED_MAX_DUPLICATE_COUNT)
                 {
-                    rankScore |= ((int)value << 1);
+                    rankScore |= (value.ToNumberValue() << shifts);
+                    shifts += bitWidth;
                 }
                 else
                 {
-                    rankScore |= (int)value;
+                    rankScore |= value.ToNumberValue();
                 }
             }
 

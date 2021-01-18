@@ -85,4 +85,34 @@ namespace PokerHandEvaluator
         public Values Value { get; private set; }
         public Suites Suite { get; private set; }
     }
+
+    public static class CardExt
+    {
+        private static Dictionary<Card.Values, int> ValueIntLookup = new Dictionary<Card.Values, int>()
+        {
+            {Card.Values.Two, 2},
+            {Card.Values.Three, 3},
+            {Card.Values.Four, 4},
+            {Card.Values.Five, 5},
+            {Card.Values.Six, 6},
+            {Card.Values.Seven, 7},
+            {Card.Values.Eight, 8},
+            {Card.Values.Nine, 9},
+            {Card.Values.Ten, 10},
+            {Card.Values.Jack, 11},
+            {Card.Values.Queen, 12},
+            {Card.Values.King, 13},
+            {Card.Values.Ace, 13},
+        };
+
+        public static int ToNumberValue(this Card.Values value)
+        {
+            int ret = -1;
+
+            if (ValueIntLookup.ContainsKey(value))
+                ret = ValueIntLookup[value];
+
+            return ret;
+        }
+    }
 }

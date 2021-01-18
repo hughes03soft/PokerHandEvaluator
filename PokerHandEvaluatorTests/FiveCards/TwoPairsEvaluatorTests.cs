@@ -39,8 +39,8 @@ namespace PokerHandEvaluator.FiveCards.Tests
 
         public static IEnumerable<object[]> GetCalculateRankScoreTestData()
         {
-            yield return new object[] { new Hand("Player1", new string[] { "AC", "AS", "KH", "KD", "10C" }), (int)FiveCardPokerEvaluator.HandRank.TwoPairs + (((int)Card.Values.Ace << 1) | ((int)Card.Values.King << 1) | ((int)Card.Values.Ten)) };
-            yield return new object[] { new Hand("Player1", new string[] { "7C", "7S", "3H", "3D", "JC" }), (int)FiveCardPokerEvaluator.HandRank.TwoPairs + (((int)Card.Values.Seven << 1) | ((int)Card.Values.Three << 1) | ((int)Card.Values.Jack)) };
+            yield return new object[] { new Hand("Player1", new string[] { "AC", "AS", "KH", "KD", "10C" }), 0x040DDA};
+            yield return new object[] { new Hand("Player1", new string[] { "7C", "7S", "3H", "3D", "JC" }), 0x04073B};
         }
 
         [TestMethod]
