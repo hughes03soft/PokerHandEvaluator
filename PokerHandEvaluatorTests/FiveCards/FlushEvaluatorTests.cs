@@ -32,17 +32,39 @@ namespace PokerHandEvaluator.FiveCards.Tests
         }
 
         [DataTestMethod()]
-        [DynamicData(nameof(GetCalculateRankScoreTestTestData), DynamicDataSourceType.Method)]
+        [DynamicData(nameof(GetCalculateRankScoreTestData), DynamicDataSourceType.Method)]
         public void CalculateRankScoreTest(Hand hand, int expected)
         {
             int actual = Eval.CalculateRankScore(hand);
             Assert.AreEqual(expected, actual);
         }
 
-        public static IEnumerable<object[]> GetCalculateRankScoreTestTestData()
+        public static IEnumerable<object[]> GetCalculateRankScoreTestData()
         {
             yield return new object[] { new Hand("Player1", new string[] { "AC", "3C", "6C", "KC", "7C" }), (int)FiveCardPokerEvaluator.HandRank.Flush + (int)Card.Values.Ace };
             yield return new object[] { new Hand("Player1", new string[] { "5S", "3S", "6S", "9S", "7S" }), (int)FiveCardPokerEvaluator.HandRank.Flush + (int)Card.Values.Nine };
+        }
+
+        [TestMethod]
+        public void ResolveTieTest()
+        {
+            var lesserHand = new Hand("lesserHand", new string[] { "KS", "3S", "6S", "KS", "7S" });
+            var higherHand = new Hand("higherHand", new string[] { "AC", "3C", "6C", "KC", "7C" });
+
+            int lesserRankScore = Eval.CalculateRankScore(lesserHand);
+            int higherRankScore = Eval.CalculateRankScore(higherHand);
+            Assert.IsTrue(lesserRankScore < higherRankScore);
+        }
+
+        [TestMethod]
+        public void TieTest()
+        {
+            var hand1 = new Hand("hand1", new string[] { "AC", "3C", "6C", "KC", "7C" });
+            var hand2 = new Hand("hand2", new string[] { "AS", "3S", "6S", "KS", "7S" });
+
+            int rankScore1 = Eval.CalculateRankScore(hand1);
+            int rankScore2 = Eval.CalculateRankScore(hand2);
+            Assert.AreEqual(rankScore1, rankScore2);
         }
     }
 }

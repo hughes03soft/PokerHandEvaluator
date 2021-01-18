@@ -16,7 +16,7 @@ namespace PokerHandEvaluator.FiveCards
 
         public int CalculateRankScore(Hand hand)
         {
-            int rankScore = (int)FiveCardPokerEvaluator.HandRank.Flush +
+            int rankScore = (int)FiveCardPokerEvaluator.HandRank.Flush |
                             (int)hand.HighestCardValue;
 
             return rankScore;
