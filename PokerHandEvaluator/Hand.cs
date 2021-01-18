@@ -9,6 +9,10 @@ namespace PokerHandEvaluator
         public string Owner { get; private set; }
         public string[] RawCards { get; private set; }
         public string Description { get; set; }
+
+        //RankScore 32-bit Representation is as follows:
+        // 0xFF00 - HandRankScore as defined in XXXPokerEvaluator Class
+        // 0x00FF - SubRankScore as defined by each Hand Evaluator Implementing Classes
         public int RankScore { get; set; }
 
         //for evalution purposes

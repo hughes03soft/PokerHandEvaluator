@@ -6,18 +6,20 @@ namespace PokerHandEvaluator.FiveCards
 {
     public class FiveCardPokerEvaluator
     {
+        // HandRank Bit Representation
+        // x|x|x|x|x|RF|SF|FK|FH|F|S|TK|TP|OP|HC|~lower 16 bits for SubRankScore~
         public enum HandRank
         {
-            HighCard        = 1 << 16,
-            OnePair         = 1 << 17,
-            TwoPairs        = 1 << 18,
-            ThreeOfAKind    = 1 << 19,
-            Straight        = 1 << 20,
-            Flush           = 1 << 21,
-            FullHouse       = 1 << 22,
-            FourOfAKind     = 1 << 23,
+            RoyalFlush      = 1 << 25,
             StraightFlush   = 1 << 24,
-            RoyalFlush      = 1 << 25
+            FourOfAKind     = 1 << 23,
+            FullHouse       = 1 << 22,
+            Flush           = 1 << 21,
+            Straight        = 1 << 20,
+            ThreeOfAKind    = 1 << 19,
+            TwoPairs        = 1 << 18,
+            OnePair         = 1 << 17,
+            HighCard        = 1 << 16
         };
 
         //add evaluators starting from the highest rank
