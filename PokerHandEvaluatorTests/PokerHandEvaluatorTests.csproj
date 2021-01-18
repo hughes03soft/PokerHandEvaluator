@@ -65,6 +65,7 @@
     <Compile Include="FiveCards\StraightEvaluatorTests.cs" />
     <Compile Include="FiveCards\StraightFlushEvaluatorTests.cs" />
     <Compile Include="FiveCards\ThreeOfAKindEvaluatorTests.cs" />
+    <Compile Include="FiveCards\TwoPairsEvaluatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
