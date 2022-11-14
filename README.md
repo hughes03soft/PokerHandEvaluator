@@ -1,5 +1,7 @@
 # PokerHandEvaluator
  Poker Hand Evaluator
+ 
+ This project is a technical exam for one of the companies I applied for and passed.
 
 Assumptions: <br />
 1. 5 card standard poker rules ((https://www.contrib.andrew.cmu.edu/~gc00/reviews/pokerrules) <br />
